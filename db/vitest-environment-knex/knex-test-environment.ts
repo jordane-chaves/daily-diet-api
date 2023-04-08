@@ -1,10 +1,16 @@
-import 'dotenv/config'
+import { config } from 'dotenv'
 
 import fs from 'node:fs'
 import path from 'node:path'
 import { execSync } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import type { Environment } from 'vitest'
+
+if (process.env.NODE_ENV === 'test') {
+  config({ path: '.env.test' })
+} else {
+  config()
+}
 
 export default <Environment>{
   name: 'knex',
