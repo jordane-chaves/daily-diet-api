@@ -1,0 +1,10 @@
+services:
+  daily-diet-pg:
+    image: bitnami/postgresql
+    container_name: daily-diet-pg
+    ports:
+      - ${DATABASE_PORT}:5432
+    environment:
+      - POSTGRESQL_USERNAME=${DATABASE_USER}
+      - POSTGRESQL_PASSWORD=${DATABASE_PASS}
+      - POSTGRESQL_DATABASE=${DATABASE_DB}

@@ -1,0 +1,48 @@
+{
+  "name": "daily-diet-api",
+  "version": "1.0.0",
+  "description": "API para controle de dieta diária",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "tsx watch src/shared/infra/http/server.ts",
+    "start": "node build/shared/infra/http/server.js",
+    "build": "tsup src --out-dir build",
+    "knex": "node --no-warnings --loader tsx ./node_modules/knex/bin/cli.js",
+    "test": "vitest run --dir src/application",
+    "test:watch": "vitest --dir src/application",
+    "test:create-knex-environment": "cd ./db/vitest-environment-knex/ && npm link && cd ../../",
+    "test:install-knex-environment": "npm link vitest-environment-knex",
+    "pretest:e2e": "run-s test:create-knex-environment test:install-knex-environment",
+    "test:e2e": "vitest run --dir src/shared/infra/http/controllers",
+    "test:e2e:watch": "vitest run --dir src/shared/infra/http/controllers",
+    "test:coverage": "vitest run --dir src/application --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/jwt": "6.7.1",
+    "bcryptjs": "2.4.3",
+    "dotenv": "16.0.3",
+    "fastify": "4.15.0",
+    "knex": "2.4.2",
+    "pg": "8.10.0",
+    "zod": "3.21.4"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "1.2.0",
+    "@types/bcryptjs": "2.4.2",
+    "@types/node": "18.15.11",
+    "@types/supertest": "2.0.12",
+    "@vitest/coverage-c8": "0.29.8",
+    "eslint": "8.37.0",
+    "npm-run-all": "4.1.5",
+    "sqlite3": "5.1.6",
+    "supertest": "6.3.3",
+    "tsup": "6.7.0",
+    "tsx": "3.12.6",
+    "typescript": "5.0.3",
+    "vite-tsconfig-paths": "4.0.7",
+    "vitest": "0.29.8"
+  }
+}
